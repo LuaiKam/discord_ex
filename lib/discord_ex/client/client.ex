@@ -52,7 +52,7 @@ defmodule DiscordEx.Client do
     end
 
     # We go ahead and add this to the state early as we use it to get the websocket gateway to start.
-    {:ok, rest_client} = DiscordEx.RestClient.start_link(%{token: opts[:token]})
+    {:ok, rest_client} = DiscordEx.RestClient.start_link(%{token: opts[:token], name: opts[:name]})
     opts = Map.put(opts, :rest_client, rest_client)
 
     user = DiscordEx.RestClient.Resources.User.current(rest_client)
