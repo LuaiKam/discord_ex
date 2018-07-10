@@ -87,7 +87,7 @@ defmodule DiscordEx.Client do
       |> Map.put(:client_pid, self()) # Pass the client state to use it
       |> Map.put(:agent_seq_num, agent_seq_num) # Pass agent sequence num
       |> Map.put(:heartbeat_pid, nil) # Place for Heartbeat process pid
-
+    GenServer.cast(:client_state, {:push, new_state})
     {:once, new_state}
   end
 
